@@ -1,47 +1,38 @@
-The following describes the mandatory requirements that must be adhered
-to for autoloader interoperability.
+Ниже описаны обязательные требования, необходимые для совместимости с классами автозагрузки.
 
-Mandatory
+Обязательные условия
 ---------
 
-* A fully-qualified namespace and class must have the following
-  structure `\<Vendor Name>\(<Namespace>\)*<Class Name>`
-* Each namespace must have a top-level namespace ("Vendor Name").
-* Each namespace can have as many sub-namespaces as it wishes.
-* Each namespace separator is converted to a `DIRECTORY_SEPARATOR` when
-  loading from the file system.
-* Each "\_" character in the CLASS NAME is converted to a 
-  `DIRECTORY_SEPARATOR`. The "\_" character has no special meaning in the 
-  namespace.
-* The fully-qualified namespace and class is suffixed with ".php" when
-  loading from the file system.
-* Alphabetic characters in vendor names, namespaces, and class names may
-  be of any combination of lower case and upper case.
+* Полностью совместимые пространство имен и класс должны иметь                   следующую структуру `\<Наименование производителя>\(<Пространство имен>\)*<Название класса>`
+* Каждое пространство имен должно иметь пространство верхнего уровня ("Наименование производителя").
+* Каждое пространство имен может иметь столько подпространств, сколько оно пожелает.
+* Каждый разделитель пространства имен, конвертируется в `DIRECTORY_SEPARATOR` при
+  загрузке из файловой системы.
+* Каждый сивол "\_" в Названии_Класса(CLASS_NAME) конвертируется в `DIRECTORY_SEPARATOR`. Символ "\_" не имеет особого значения в пространстве имен.
+* К полностью совместимому пространству имен и классу добавляется расширение ".php" во время загрузки из файловой системы.
+* Буквы в наименование производителя, пространствах имен, классах могут быть любым сочетанием нижнего и верхнего регистра.
 
-Examples
+Примеры
 --------
 
-* `\Doctrine\Common\IsolatedClassLoader` => `/path/to/project/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
-* `\Symfony\Core\Request` => `/path/to/project/lib/vendor/Symfony/Core/Request.php`
+* `\Doctrine\Common\IsolatedClassLoader` => `/путь/к/проекту/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
+* `\Symfony\Core\Request` => `/путь/к/проекту/lib/vendor/Symfony/Core/Request.php`
 * `\Zend\Acl` => `/path/to/project/lib/vendor/Zend/Acl.php`
-* `\Zend\Mail\Message` => `/path/to/project/lib/vendor/Zend/Mail/Message.php`
+* `\Zend\Mail\Message` => `/путь/к/проекту/lib/vendor/Zend/Mail/Message.php`
 
-Underscores in Namespaces and Class Names
+Подчеркивание в названиях пространств имен и классов
 -----------------------------------------
 
-* `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
-* `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
+* `\Пространство_Имен\Пакет\Название_Класса` => `/путь/к/проекту/lib/vendor/namespace/package/Class/Name.php`
+* `\Пространство_Имен\Название_Пакета\Название_Класса` => `/путь/к/проекту/lib/vendor/namespace/package_name/Class/Name.php`
 
-The standards we set here should be the lowest common denominator for
-painless autoloader interoperability. You can test that you are
-following these standards by utilizing this sample SplClassLoader
-implementation which is able to load PHP 5.3 classes.
+Стандарты, установленные здесь, должны быть минимальным общим знаменателем для безболезненной интероперабельности с  классами автозагрузки. Вы можете протестировать, что вы поняли эти стандарты, используя пример этого класса автозагрузки(SplClassLoader), реализация которого может загрузить классы PHP 5.3.
 
-Example Implementation
+
+Пример реализации
 ----------------------
 
-Below is an example function to simply demonstrate how the above
-proposed standards are autoloaded.
+Ниже представлена функция для демонстрации автоматической загрузки стандартов, представленных выше.
 
     <?php
     
@@ -60,13 +51,11 @@ proposed standards are autoloaded.
         require $fileName;
     }
 
-SplClassLoader Implementation
+Реализация класса автозагрузки(SplClassLoader)
 -----------------------------
 
-The following gist is a sample SplClassLoader implementation that can
-load your classes if you follow the autoloader interoperability
-standards proposed above. It is the current recommended way to load PHP
-5.3 classes that follow these standards.
+Следующий gist является примером реализации класса автозагрузки(SplClassLoader), которая может загружать ваши классы если вы следуете стандартам интероперабельности классов автозагрузки, представленных выше. Это путь, который рекомендуется для загрузки классов PHP 5.3, который следует этим стандартам.
+
 
 * [http://gist.github.com/221634](http://gist.github.com/221634)
 
