@@ -1,42 +1,44 @@
-PHP Framework Interoperability Group
+Группа Интероперабельности PHP Фрэймворков
 ====================================
 
 
-Proposing a Standards Recommendation
+Предложение новых рекомендательных стандартов
 ------------------------------------
 
-To propose a standards recommendation (PSR):
+Для предложения новых рекомендательных стандартов (PSR):
 
-- fork this repo, create a branch, checkout that branch, add the PSR in
-  `proposed/`, push the branch to Github, and send a pull request; or,
+- сделайте fork этого репозитория, создайте branch, сделайте checkout, добавьте PSR в
+  `proposed/`, сделайте push branch'а в Github, и отправте pull request; или,
 
-- create a ticket to start a discussion on Github; or,
+- создайте тикет для начала обсуждения на Github; или,
 
-- start a conversation on the [mailing list][].
+- начните обсужение в [списке рассылок][].
 
-[mailing list]: http://groups.google.com/group/php-fig/
+[списке рассылок]: http://groups.google.com/group/php-fig/
+[список рассылок]: http://groups.google.com/group/php-fig/
 
-
-Requesting Membership
+Запрос Членства
 ---------------------
 
-You **do not** need to be a voting member to participate in discussion on
-the [mailing list][].
+Вам **не нужно** вам не нужно быть членом голосования для участия в дискуссии в [списке рассылок][].
 
-To become a voting member, you must send an email to the [mailing list][].
+Чтобы стать членом голосования, вам нужно отослать email в [список рассылок][].
 
-- The subject line should read: `Membership Request: {$your_name} ({$project_name})`
+- Тема сообщения должна соотвествовать следующей форме: `Membership Request: {$ваше_имя} ({$название_проекта})`
 
 - The body should include your name, the name of (and link to) the project you
   represent, and other details you feel are relevant.
-  
-Current members will vote on your request.
+- Тело сообщения должно включать ваше имя, имя (и сылка на него) проекта, который вы представляете, и остальные вещи, которые вы считаете связанными.
+
+Текущие члены будут голосовать при вашем запросе.
 
 Do not combine separate membership requests in a single thread; one request
 per thread, please.
+Не используйте разные запросы на членство в одном сообщении; одно сообщение - один запрос, пожалуйста.
 
 
-Voting Members
+
+Члены голосования
 --------------
 
 1. Nate Abele: Lithium
@@ -83,4 +85,4 @@ Voting Members
 
 1. Matthew Weier O'Phinney: Zend Framework, Zend Framework 2
 
-1. David Zülke: Agavi
+1. David ZГјlke: Agavi
