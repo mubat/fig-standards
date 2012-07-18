@@ -1,62 +1,48 @@
-Coding Style Guide
+Руководство написания кода
 ==================
 
-This guide extends and expands on [PSR-1][], the basic coding standard.
+Это руководство наследует и расширяет [PSR-1][], основной стандарт написания кода.
 
-The intent of this guide is to reduce cognitive friction when scanning code
-from different authors. It does so by enumerating a shared set of rules and
-expectations about how to format PHP code.
+Целью данного руководства является уменьшение недовольства, во время чтения(сканирования) кода другого автора. Этого удается достичь путем перечисленного общего набора правил и ожиданий о том, как оформлять PHP код. 
 
-The style rules herein are derived from commonalities among the various member
-projects. When various authors collaborate across multiple projects, it helps
-to have one set of guidelines to be used among all those projects. Thus, the
-benefit of this guide is not in the rules themselves, but in the sharing of
-those rules.
+Правила стилизации, приведенные здесь, выводятся из сходства между различными членами проектов. Когда разные авторы сотрудничают между несколькими проектами, это помогает иметь один набор руководящих принципов для использования сразу всеми этими проектами. Таким образом, преимущество этого руководства не в самих правилах, а в обмене этими правилами.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119][].
+Ключевые слова "ДОЛЖЕН", "НЕ ДОЛЖЕН", "НЕОБХОДИМ", "ЖЕЛАТЕЛЕН", "НЕ ЖЕЛАТЕЛЕН", "ДОЛЖЕН",
+"НЕ ДОЛЖЕН", "РЕКОМАНДОВАН", "ВЕРОЯТЕН", и "ОПЦИОНАЛЕН" в этом документе должны быть интерпретированы в соответствии с [RFC 2119][].
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
-[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
+[PSR-0]: https://github.com/getjump/fig-standards/blob/master/accepted/PSR-0.md
+[PSR-1]: https://github.com/getjump/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
 
 
-1. Overview
+1. Обзор
 -----------
 
-- Code MUST follow [PSR-1][].
+- Код ДОЛЖЕН следовать [PSR-1][].
 
-- Code MUST use 4 spaces for indenting, not tabs.
+- Код ДОЛЖЕН использовать 4 пробела для отступа, не табы.
 
-- There MUST NOT be a hard limit on line length; the soft limit MUST be 120
-  characters; lines SHOULD be 80 characters or less.
+- НЕ ОБЯЗАТЕЛЬНЫ жесткие ограничения на длину линии; мягкое ограничение ОБЯЗАТЕЛЬНО должно быть равно 120 символам; линии ДОЛЖНЫ быть равны 80 символам или меньше.
 
-- There MUST be one blank line after the `namespace` declaration, and there
-  MUST be one blank line after the block of `use` declarations.
+- После объявления `пространства_имен` ДОЛЖНА быть одна пустая линия, так-же после объявления блока `use` ДОЛЖНА быть одна пустая линия. 
 
-- Opening braces for classes MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- Открытие квадратной скобки для классов ОБЯЗАТЕЛЬНО должно происходить на слеующей линии, так-же закрывающая квадратная скобка ДОЛЖНА находиться после тела класса.
 
-- Opening braces for methods MUST go on the next line, and closing braces MUST
-  go on the next line after the body.
+- Открытие квадратной скобки для методов ОБЯЗАТЕЛЬНО должно происходить на слеующей линии, так-же закрывающая квадратная скобка ДОЛЖНА находиться после тела метода.
 
-- Visibility MUST be declared on all properties and methods; `abstract` and
-  `final` MUST be declared before the visibility; `static` MUST be declared
-  after the visibility.
+- Видимость ДОЛЖНА быть объявлена на всех свойствах и методах; `abstract` и `final` ОБЯЗАТЕЛЬНО должно быть объявлено перед видимостью; `static` ОБЯЗАТЕЛЬНО должно быть объявлено после видимости.
   
-- Control structure keywords MUST have one space after them; method and
-  function calls MUST NOT.
+- Ключевые слова управляющих структур ОБЯЗАТЕЛЬНО должны иметь один пробел после себя; методы и вызовы функций НЕ ДОЛЖЕНЫ.
 
-- Opening braces for control structures MUST go on the same line, and closing
-  braces MUST go on the next line after the body.
+- Открытие скобки для управляющих структур ОБЯЗАТЕЛЬНО должно происходить на той же самой линии, и закрытие скобки ОБЯЗАТЕЛЬНО должно проходить на следующей за телом линии.
 
 - Opening parentheses for control structures MUST NOT have a space after them,
   and closing parentheses for control structures MUST NOT have a space before.
+- Открывающая скобка управляющих структур ОБЯЗАТЕЛЬНО НЕ должна иметь пробела после неё, а закрывающая скобка управляющих структур ОБЯЗАТЕЛЬНО НЕ должна иметь пробела до.
 
-### 1.1. Example
+### 1.1. Пример
 
-This example encompasses some of the rules below as a quick overview:
+Этот пример включает в себя некоторые правила, которые представлены ниже, своего рода краткий обзор:
 
 ```php
 <?php
@@ -86,70 +72,66 @@ class Foo extends Bar implements FooInterface
 }
 ```
 
-2. General
+2. Общее
 ----------
 
-### 2.1 Basic Coding Standard
+### 2.1 Основной стандарт написания кода
 
-Code MUST follow all rules outlined in [PSR-1][].
+Код ДОЛЖЕН следовать всем правилам указанным в [PSR-1][]
 
-### 2.2 Files
+### 2.2 Файлы
 
-All PHP files MUST use the Unix LF (linefeed) line ending.
+Все PHP файлы ДОЛЖНЫ использовать Unix LF(перевод строки) для окончания строки. 
 
-All PHP files MUST end with a single blank line.
+Все PHP файлы должны заканчиваться с одной пустой строкой
 
-The closing `?>` tag MUST be omitted from files containing only PHP.
+Закрывающий тэг `?>` ДОЛЖЕН быть удален из файлов, содержащих только PHP.
 
-### 2.3. Lines
+### 2.3. Строки
 
-There MUST NOT be a hard limit on line length.
+НЕ ДОЛЖНО быть жесткого ограничения на длину строки.
 
-The soft limit on line length MUST be 120 characters; automated style checkers
-MUST warn but MUST NOT error at the soft limit.
+Мягкое ограничение на длину строки ДОЛЖНО быть 120 символов; автоматические проверки стиля ДОЛЖНЫ предупреждать, но НЕ ДОЛЖНЫ выдавать ошибку при пресечении мягкого ограничения.
 
-Lines SHOULD NOT be longer than 80 characters; lines longer than that SHOULD
-be split into multiple subsequent lines of no more than 80 characters each.
+Строкам НЕ СЛЕДУЕТ быть длинее 80 символов; строки длиннее СЛЕДУЕТ разделить на несколько последующих строк, не более 80 символов каждая.
 
-There MUST NOT be trailing whitespace at the end of non-blank lines.
+В конце не-пустых строк не должно быть пустого пространства.
 
-Blank lines MAY be added to improve readability and to indicate related
-blocks of code.
+Пустые строки МОГУТ быть добавлены для улучшения читабельности кода и для определения взаимосвязанных блоков кода.
 
-There MUST NOT be more than one statement per line.
+В каждой строке ДОЛЖНО быть не более одного оператора.
 
-### 2.4. Indenting
+### 2.4. Отступы
 
-Code MUST use an indent of 4 spaces, and MUST NOT use tabs for indenting.
+Код ДОЛЖЕН использовать 4 пробела, и НЕ ДОЛЖЕН использовать табы для отступов.
 
-> N.b.: Using only spaces, and not mixing spaces with tabs, helps to avoid
-> problems with diffs, patches, history, and annotations. The use of spaces
-> also makes it easy to insert fine-grained sub-indentation for inter-line 
-> alignment.
+> N.b.: Использование только пробелов, и не смешивание пробелов с табами, помогает избежать
+> проблем с различиями, патчами, историй и аннотациями. Использование пробелов
+> так-же делает позволяет легко вставить мелкозернистый суботступ для межстрочного
+> выравнивания.
 
-### 2.5. Keywords and True/False/Null
+### 2.5. Ключевые слова и True/False/Null
 
-PHP [keywords][] MUST be in lower case.
+PHP [ключевые слова][] ДОЛЖНЫ быть в нижнем регистре.
 
-The PHP constants `true`, `false`, and `null` MUST be in lower case.
+Константы PHP `true`, `false`, и `null` ДОЛЖНЫ быть в нижнем регистре.
 
-[keywords]: http://php.net/manual/en/reserved.keywords.php
+[ключевые слова]: http://php.net/manual/ru/reserved.keywords.php
 
 
 
-3. Namespace and Use Declarations
+3. Объявление пространств имен и `use`
 ---------------------------------
 
-When present, there MUST be one blank line after the `namespace` declaration.
+Если присутствует, после объявления пространства имен ДОЛЖНА быть одна пустая строка.
 
-When present, all `use` declarations MUST go after the `namespace`
-declaration.
+Если присутствует, все объявления `use` ДОЛЖНЫ идти после объявления пространства имен.
 
-There MUST be one `use` keyword per declaration.
+ДОЛЖНО быть только одно ключевое слово `use` на объявление.
 
-There MUST be one blank line after the `use` block.
+ДОЛЖНА быть одна пустая строка после блока `use`.
 
-For example:
+Например:
 
 ```php
 <?php
@@ -159,23 +141,21 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-// ... additional PHP code ...
+// ... Дополнительный PHP код ...
 
 ```
 
 
-4. Classes, Properties, and Methods
+4. Классы, Свойства и Методы.
 -----------------------------------
 
-The term "class" refers to all classes, interfaces, and traits.
+Термин "класс" относится ко всем классам, интерфейсам и трэйтам.
 
-### 4.1. Extends and Implements
+### 4.1. Наследование и Имплементация
 
-The `extends` and `implements` keywords MUST be declared on the same line as
-the class name.
+Ключевые слова `extends` и `implements` ДОЛЖНЫ быть объявлены на той же строке, что и класс.
 
-The opening brace for the class go MUST go on its own line; the closing brace
-for the class MUST go on the next line after the body.
+Открывающая квадратная скобка для класса ДОЛЖНА быть на отдельной строке; закрывающая квадратная скобка класса ДОЛЖНА быть на следующей строке, после тела класса.
 
 ```php
 <?php
@@ -187,13 +167,14 @@ use OtherVendor\OtherPackage\BazClass;
 
 class ClassName extends ParentClass implements \ArrayAccess, \Countable
 {
-    // constants, properties, methods
+    // константы, свойства, методы
 }
 ```
 
 Lists of `implements` MAY be split across multiple lines, where each
 subsequent line is indented once. When doing so, the first item in the list
 MUST be on the next line, and there MUST be only one interface per line.
+Список `implements` МОЖЕТ быть разделен на несколько строк, где каждая последующая строка с одним отступом. При этом первый элемент списка ДОЛЖЕН быть на следующей линии, и в этом списке ДОЛЖЕН быть только один интерфейс на линии.
 
 ```php
 <?php
@@ -208,22 +189,21 @@ class ClassName extends ParentClass implements
     \Countable,
     \Serializable
 {
-    // constants, properties, methods
+    // константы, свойства, методы
 }
 ```
 
-### 4.2. Properties
+### 4.2. Свойства
 
-Visibility MUST be declared on all properties.
+Видимость ДОЛЖНА быть объявлена на всех свойствах.
 
-The `var` keyword MUST NOT be used to declare a property.
+Ключевое слово `var` НЕ ДОЛЖНО использовать для объявления свойств.
 
-There MUST NOT be more than one property declared per statement.
+НЕ ДОЛЖНО быть больше одного свойства объявленного на выражение.
 
-Property names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+Названиям свойств НЕ СЛЕДУЕТ быть с префиксом с одиночным символом подчеркиваия для обозначения защищенной или приватной видимости. 
 
-A property declaration looks like the following.
+Объявление свойств должно выглядеть, как в примере:
 
 ```php
 <?php
@@ -235,20 +215,15 @@ class ClassName
 }
 ```
 
-### 4.3. Methods
+### 4.3. Методы
 
-Visibility MUST be declared on all methods.
+Видимость ДОЛЖНА быть объявлена на всех методах.
 
-Method names SHOULD NOT be prefixed with a single underscore to indicate
-protected or private visibility.
+Названиям методов НЕ СЛЕДУЕТ быть с префиксом символом подчеркивания для обозначения защищенной или приватной видимости.
 
-Method names MUST NOT be declared with a space after the method name. The
-opening brace MUST go on its own line, and the closing brace MUST go on the
-next line following the body. There MUST NOT be a space after the opening
-parenthesis, and there MUST NOT be a space before the closing parenthesis.
+Название метода НЕ ДОЛЖНО объявляться с пробелами после названия метода. Открывающая скобка ДОЛЖНО быть на своей собственной линии, и закрывающая скобка ДОЛЖНА быть на следующей линии после тела метода. После открывающей круглой скобки НЕ ДОЛЖНО быть пробелов, а так-же НЕ ДОЛЖНО быть пробелов после закрывающей круглой скобки.
 
-A method declaration looks like the following. Note the placement of
-parentheses, commas, spaces, and braces:
+Объявление методов должно выглядеть, как в примере. Обратите внимание на расположение скобок, запятых, пробелов и скобок:
 
 ```php
 <?php
@@ -258,12 +233,12 @@ class ClassName
 {
     public function fooBarBaz($arg1, &$arg2, $arg3 = [])
     {
-        // method body
+        // тело метода
     }
 }
 ```    
 
-### 4.4. Method Arguments
+### 4.4. Аргументы методов
 
 In the argument list, there MUST NOT be a space before each comma, and there
 MUST be one space after each comma.
