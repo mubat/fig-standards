@@ -1,124 +1,118 @@
-Basic Coding Standard
+Основной стандарт написания кода
 =====================
 
-This section of the standard comprises what should be considered the standard
-coding elements that are required to ensure a high level of technical
-interoperability between shared PHP code.
+Этот включает в себя стандарты того, что следует считать стандартными элементами написания кода, которые необходимы для обеспечения высокого уровня технической интероперабельности между общим PHP кодом.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119][].
+Ключевые слова "ОБЯЗАН", "НЕ ОБЯЗАН", "НЕОБХОДИМ", "ЖЕЛАТЕЛЕН", "НЕ ЖЕЛАТЕЛЕН", "ДОЛЖЕН",
+"НЕ ДОЛЖЕН", "РЕКОМАНДОВАН", "ВЕРОЯТЕН", и "ОПЦИОНАЛЕН" в этом документе должны быть интерпретированы в соответствии с [RFC 2119][].
+
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
+[PSR-0]: https://github.com/getjump/fig-standards/blob/master/accepted/PSR-0.md
 
 
-1. Overview
+1. Обзор
 -----------
 
-- Files MUST use only `<?php` and `<?=` tags.
+- Файлы ОБЯЗАНЫ использовать только тэги `<?php` и `<?=`.
 
-- Files MUST use only UTF-8 without BOM for PHP code.
+- Файлы ОБЯЗАНЫ использовать только кодировку "UTF-8 без BOM" ("UTF-8 Without BOM") для PHP-кода.
 
-- Files SHOULD *either* declare symbols (classes, functions, constants, etc.)
-  *or* cause side-effects (e.g. generate output, change .ini settings, etc.)
-  but SHOULD NOT do both.
+- Файлы ДОЛЖНЫ *или* объявлять символы (классы, функции, константы, и т.д.)
+  *или* вызывать побочные эффекты (например генерировать вывод, менять настройки .ini, и т.д.)
+  но НЕ ДОЛЖНЫ делать и то и другое.
 
-- Namespaces and classes MUST follow [PSR-0][].
+- Пространства имен и классы должны следовать [PSR-0][].
 
-- Class names MUST be declared in `StudlyCaps`.
+- Имена классов ОБЯЗАНЫ определяться в `StudlyCaps`.
 
-- Class constants MUST be declared in all upper case with underscore separators.
+- Константы классов ОБЯЗАНЫ определяться со всеми символами в верхнем регистре с символами подчеркивания.
 
-- Method names MUST be declared in `camelCase`.
+- Названия методов ОБЯЗАНЫ определяться в `camelCase`.
 
 
-2. Files
+2. Файлы
 --------
 
-### 2.1. PHP Tags
+### 2.1. Тэги PHP
 
-PHP code MUST use the long `<?php ?>` tags or the short-echo `<?= ?>` tags; it
-MUST NOT use the other tag variations.
+PHP код ОБЯЗАН использовать длинный тэг `<?php ?>` или короткий тэг `<?= ?>` для маленького вывода информации; он ОБЯЗАН НЕ ИСПОЛЬЗОВАТЬ другие вариации тэгов.
 
-### 2.2. Character Encoding
+### 2.2. Кодировка символов
 
-PHP code MUST use only UTF-8 without BOM.
+PHP код ОБЯЗАН использовать кодировку UTF-8 без BOM(UTF-8 without BOM).
 
-### 2.3. Side Effects
+### 2.3. Побочные эффекты
 
-A file SHOULD declare new symbols (classes, functions, constants,
-etc.) and cause no other side effects, or it SHOULD execute logic with side
-effects, but SHOULD NOT do both.
+Файл должен объявлять новые символы(классы, функции, константы,
+и т.д..) и не вызывать других побочных эфектов, или ДОЛЖЕН выполнять логику с побочными эффектами, но НЕ ДОЛЖЕН делать оба.
 
-The phrase "side effects" means execution of logic not directly related to
-declaring classes, functions, constants, etc., *merely from including the
-file*.
+Фраза "побочный эффект" означает выполнение логики, которая не относится напрямую к объявлению классов, функций, констант, и т.д. *простое подключение из файлов
 
-"Side effects" include but are not limited to: generating output, explicit
-use of `require` or `include`, connecting to external services, modifying ini
-settings, emitting errors or exceptions, modifying global or static variables,
-reading from or writing to a file, and so on.
+"Побочный эффект" включает, но не ограничивается: генерацией вывода, явное 
+использование `require` или `include`, подключение к внешним сервисами, модификация настроек ini, выдавать ошибки или исключения, изменять глобальные или статичные переменные,
+чтение или запись в файл, и т.д.
 
-The following is an example of a file with both declarations and side effects;
-i.e, an example of what to avoid:
+Ниже представлен пример файла вместе и с декларацией и с побочными эффектами;
+этот код является примером того, чего следует избегать(код является неправильным):
+
 
 ```php
 <?php
-// side effect: change ini settings
+// Побочный эффект: изменение настроек ini
 ini_set('error_reporting', E_ALL);
 
-// side effect: loads a file
+// Побочный эффект: загрузка файла
 include "file.php";
 
-// side effect: generates output
+// Побочный эффект: генерация вывода
 echo "<html>\n";
 
-// declaration
+// Объявление функции
 function foo()
 {
-    // function body
+    // тело функции
 }
 ```
 
-The following example is of a file that contains declarations without side
-effects; i.e., an example of what to emulate:
+Следующий пример файла, который содержит объявление без побочных эффектов;
+этот код является правильным;
+
 
 ```php
 <?php
-// declaration
+// Объявление функции
 function foo()
 {
-    // function body
+    // Тело функциии
 }
 
-// conditional declaration is *not* a side effect
+// Условное объявление *не является* побочным эффектом
 if (! function_exists('bar')) {
     function bar()
     {
-        // function body
+        //Тело функции
     }
 }
 ```
 
 
-3. Namespace and Class Names
+3. Пространства имен и названия классов
 ----------------------------
 
-Namespaces and classes MUST follow [PSR-0][].
+Пространства имен и классы ОБЯЗАНЫ следовать [PSR-0][].
 
-This means each class is in a file by itself, and is in a namespace of at
-least one level: a top-level vendor name.
+Это значит, что каждый класс - это файл, не больше, не меньше, и в пространстве имен, как минимум один уровень: верхний уровень наименование производителя.
 
-Class names MUST be declared in `StudlyCaps`.
+Названия классов ОБЯЗАНЫ быть объявленными в `StudlyCaps`.
 
-Code written for PHP 5.3 and after MUST use formal namespaces.
+Код написанный для PHP 5.3 и выше ОБЯЗАН использовать формальные пространства имен.
 
-For example:
+Например:
 
 ```php
 <?php
-// PHP 5.3 and later:
+// PHP 5.3 и выше:
 namespace Vendor\Model;
 
 class Foo
@@ -126,26 +120,26 @@ class Foo
 }
 ```
 
-Code written for 5.2.x and before SHOULD use the pseudo-namespacing convention
-of `Vendor_` prefixes on class names.
+Код написанный для PHP 5.2.x и ниже ДОЛЖЕН использовать псевдо конвенцию пространств имен, начиная с `Наименования_Производителя_` в названиях классов.
 
 ```php
 <?php
-// PHP 5.2.x and earlier:
+// PHP 5.2.x и ниже:
 class Vendor_Model_Foo
 {
 }
 ```
 
-4. Class Constants, Properties, and Methods
+4. Константы Классов, Свойства, и Методы
 -------------------------------------------
 
-The term "class" refers to all classes, interfaces, and traits.
+Термин класс относится, ко всем классам, интерфейсам и трэйтам.
 
-### 4.1. Constants
+### 4.1. Константы
 
-Class constants MUST be declared in all upper case with underscore separators.
-For example:
+Константы Классов ОБЯЗАНЫ быть объявленными символами верхнего регистра вместе с разделителями(символами подчеркивания).
+
+Например:
 
 ```php
 <?php
@@ -158,15 +152,14 @@ class Foo
 }
 ```
 
-### 4.2. Properties
+### 4.2. Свойства
 
-This guide intentionally avoids any recommendation regarding the use of
-`$StudlyCaps`, `$camelCase`, or `$under_score` property names.
+Это руководство намеренно избегает рекомендаций относительно использования 
+`$StudlyCaps`, `$camelCase`, или `$under_score` в названиях свойств.
 
-Whatever naming convention is used SHOULD be applied consistently within a
-reasonable scope. That scope may be vendor-level, package-level, class-level,
-or method-level.
+Как бы то ни было, используемый стандарт именования ДОЛЖЕН применяться последовательно в разумных пределах. Этот предел  может быть установлен на уровне производителя, пакета, Класса,
+или метода.
 
-### 4.3. Methods
+### 4.3. Методы
 
-Method names MUST be declared in `camelCase()`.
+Названия Методов ОБЯЗАНЫ быть объявлены в `camelCase()`.
