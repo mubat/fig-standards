@@ -1,3 +1,10 @@
+Стандарт автозагрузки
+====================
+
+> **Устаревший** - 21.10.2014 PSR-0 помечен как устаревший. Стандарт [PSR-4] теперь рекомендуем как альтернатива.
+
+[PSR-4]: https://github.com/getjump/fig-standards/blob/master/accepted/PSR-4-autoloader.md
+
 Ниже описаны обязательные требования, необходимые для совместимости с классами автозагрузки.
 
 Обязательные условия
@@ -34,22 +41,25 @@
 
 Ниже представлена функция для демонстрации автоматической загрузки стандартов, представленных выше.
 
-    <?php
-    
-    function autoload($className)
-    {
-        $className = ltrim($className, '\\');
-        $fileName  = '';
-        $namespace = '';
-        if ($lastNsPos = strripos($className, '\\')) {
-            $namespace = substr($className, 0, $lastNsPos);
-            $className = substr($className, $lastNsPos + 1);
-            $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
-        }
-        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
-    
-        require $fileName;
+~~~php
+<?php
+
+function autoload($className)
+{
+    $className = ltrim($className, '\\');
+    $fileName  = '';
+    $namespace = '';
+    if ($lastNsPos = strrpos($className, '\\')) {
+        $namespace = substr($className, 0, $lastNsPos);
+        $className = substr($className, $lastNsPos + 1);
+        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
     }
+    $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+
+    require $fileName;
+}
+spl_autoload_register('autoload');
+~~~
 
 Реализация класса автозагрузки (SplClassLoader)
 -----------------------------
